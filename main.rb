@@ -6,6 +6,9 @@ puts "***---...Welcome to Text Adventure!...---***"
 puts
 puts
 
+puts "What is your name?"
+name = gets.chomp
+
 puts "First define the size of the map you want:"
 print "Enter width:"
 width = gets.chomp
@@ -23,6 +26,12 @@ print "Enter y coordinate:"
 yf = gets.chomp
 print "How many NPCs do you want?: "
 numnpc = gets.chomp
+
+world = Map.new (width, height, numnpc)
+player = Character.new (xs, ys)
+world.setfinish(xf, yf)
+
+
 puts "Right! Let's go! Use WASD to move."
 move = gets.chomp
 puts "---You move #{direction}.---"
