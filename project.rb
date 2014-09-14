@@ -3,10 +3,16 @@ class Character (x, y)
 
 	def initialize
 		@health = 10
-		@attack = 1
+		@@attack = 1
 		@money = 5
-		@start = [x, y]
+		@position = [x, y]
 	end
+
+	def showposition
+		puts "You are at #{@position[0]}, #{@position[1]}"
+	end
+
+
 
 end
 
@@ -14,36 +20,87 @@ end
 class Map (x, y, n)
 
 	def initialize 
-		@grid = [x, y] 
+		@map = [x, y] 
 		@numberofNPC = n
 	end
 
-def
+	def setfinish (posx, posy)
+		finish = [posx, posy]
+		puts "Finish point set!"
+	end
 
 end
+
+npcarray = ["Rogue", "Warlock", "Swordsmith", "Wizard"]
+randNPC = rand(npcarray)
 
 
 
 class NPC
 
 	def initialize
-		@name = name
 		@health = 0
 		@power = 0
-
-	end
-
-	def fight 
+		@gold = rand(1..10)
 
 	end
 
 end
+
 
 class Rogue < NPC
-	@
+	def initialize
+		@health = 3
+		@power = 1
+	end
+
 end
 
 
+class Warlock < NPC
+	def initialize
+		@health = 2
+		@power = 2
+	end
+end
+
+
+class Merchant < NPC
+	def initialize
+		@health = 0	
+	end
+
+	def 
+
+end
+
+class Swordsmith < Merchant
+
+	def initialize
+		puts "Hello I am a Swordsmith!"
+		puts "Would you like me to sharpen your sword for 5 gold pieces?"
+	end
+
+
+	def sharpen
+		@@attack += 1
+		puts "Your sword has been sharpened! "
+	end
+end
+
+class Wizard < Merchant
+
+	def initialize
+		puts "Hello I am a Wizard!"
+		puts "Would you like me to heal you for 5 gold pieces?"
+	end
+
+
+	def heal
+		@@health += 1
+		puts "Your health has been increased!"
+	end
+end
 
 
 
