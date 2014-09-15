@@ -1,116 +1,128 @@
-class Map (x, y, n)
+class Map
 
-	def initialize 
+	def initialize (x, y, n)
 		@map = [x.abs, y.abs] 
 		@numberofNPC = n
 	end
 
-	def charposition
-
+	def charposition (startx, starty)
+		start = [startx, starty]
+			if startx <= @map[0] && starty <= @map[1]
+				puts "Start point set!"
+			else
+				puts "Start point must be within map."
+			end
 	end
 	
 
-	def setfinish (posx, posy)
-		finish = [posx, posy]
-		if posx <= x && posy <= y
+	def setfinish (finx, finy)
+		finish = [finx, finy]
+		if finx <= @map[0] && finy <= @map[1]
 			puts "Finish point set!"
 		else
 			puts "Finish point must be within map."
+		end
 	end
 
 end
 
-
-class Character (x, y)
-
-	def initialize
-		@health = 10
-		@@attack = 1
-		@money = 5
-		@position = [x, y]
-	end
-
-	def showposition
-		puts "You are at #{@position[0]}, #{@position[1]}"
-	end
-
-
-
-end
+# test = Map.new(5, 5, 1)
+# test.setfinish(3, 1)
+# test.charposition(1, 1)
 
 
 
 
-npcarray = ["Rogue", "Warlock", "Swordsmith", "Wizard"]
-randNPC = rand(npcarray)
+# class Character (x, y)
+
+# 	def initialize
+# 		@health = 10
+# 		@@attack = 1
+# 		@money = 5
+# 		@position = [x, y]
+# 	end
+
+# 	def showposition
+# 		puts "You are at #{@position[0]}, #{@position[1]}"
+# 	end
 
 
 
-class NPC
-
-	def initialize
-		@health = 0
-		@power = 0
-		@gold = rand(1..10)
-
-	end
-
-end
+# end
 
 
-class Rogue < NPC
-	def initialize
-		@health = 3
-		@power = 1
-	end
-
-end
 
 
-class Warlock < NPC
-	def initialize
-		@health = 2
-		@power = 2
-	end
-end
+# npcarray = ["Rogue", "Warlock", "Swordsmith", "Wizard"]
+# randNPC = rand(npcarray)
 
 
-class Merchant < NPC
-	def initialize
-		@health = 0	
-	end
 
-	def 
+# class NPC
 
-end
+# 	def initialize
+# 		@health = 0
+# 		@power = 0
+# 		@gold = rand(1..10)
 
-class Swordsmith < Merchant
+# 	end
 
-	def initialize
-		puts "Hello I am a Swordsmith!"
-		puts "Would you like me to sharpen your sword for 5 gold pieces?"
-	end
+# end
 
 
-	def sharpen
-		@@attack += 1
-		puts "Your sword has been sharpened! "
-	end
-end
+# class Rogue < NPC
+# 	def initialize
+# 		@health = 3
+# 		@power = 1
+# 	end
 
-class Wizard < Merchant
-
-	def initialize
-		puts "Hello I am a Wizard!"
-		puts "Would you like me to heal you for 5 gold pieces?"
-	end
+# end
 
 
-	def heal
-		@@health += 1
-		puts "Your health has been increased!"
-	end
-end
+# class Warlock < NPC
+# 	def initialize
+# 		@health = 2
+# 		@power = 2
+# 	end
+# end
+
+
+# class Merchant < NPC
+# 	def initialize
+# 		@health = 0	
+# 	end
+
+# 	def 
+
+# end
+
+# class Swordsmith < Merchant
+
+# 	def initialize
+# 		puts "Hello I am a Swordsmith!"
+# 		puts "Would you like me to sharpen your sword for 5 gold pieces?"
+# 	end
+
+
+# 	def sharpen
+# 		@@attack += 1
+# 		puts "Your sword has been sharpened! "
+# 	end
+# end
+
+# class Wizard < Merchant
+
+# 	def initialize
+# 		puts "Hello I am a Wizard!"
+# 		puts "Would you like me to heal you for 5 gold pieces?"
+# 	end
+
+
+# 	def heal
+# 		@@health += 1
+# 		puts "Your health has been increased!"
+# 	end
+# end
 
 
 
