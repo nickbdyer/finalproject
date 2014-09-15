@@ -1,3 +1,25 @@
+class Map (x, y, n)
+
+	def initialize 
+		@map = [x.abs, y.abs] 
+		@numberofNPC = n
+	end
+
+	def charposition
+
+	end
+	
+
+	def setfinish (posx, posy)
+		finish = [posx, posy]
+		if posx <= x && posy <= y
+			puts "Finish point set!"
+		else
+			puts "Finish point must be within map."
+	end
+
+end
+
 
 class Character (x, y)
 
@@ -17,19 +39,7 @@ class Character (x, y)
 end
 
 
-class Map (x, y, n)
 
-	def initialize 
-		@map = [x, y] 
-		@numberofNPC = n
-	end
-
-	def setfinish (posx, posy)
-		finish = [posx, posy]
-		puts "Finish point set!"
-	end
-
-end
 
 npcarray = ["Rogue", "Warlock", "Swordsmith", "Wizard"]
 randNPC = rand(npcarray)
