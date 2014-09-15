@@ -1,54 +1,133 @@
 class Map
 
-	def initialize (x, y, n)
+	attr_accessor :startset, :finishset, :numnpc
+
+	def initialize (x, y)
 		@map = [x.abs, y.abs] 
-		@numberofNPC = n
+		@currentpos = []
+		@startset = false
+		@finishset = false
+		@numnpc = 0
 	end
 
-	def charposition (startx, starty)
-		start = [startx, starty]
+	def setstart (startx, starty)
+		@currentpos << startx
+		@currentpos << starty
 			if startx <= @map[0] && starty <= @map[1]
 				puts "Start point set!"
+				puts
+				@startset = true
 			else
 				puts "Start point must be within map."
+				puts
 			end
 	end
 	
 
 	def setfinish (finx, finy)
-		finish = [finx, finy]
+		@finish = [finx, finy]
 		if finx <= @map[0] && finy <= @map[1]
 			puts "Finish point set!"
+			puts
+			@finishset = true
 		else
 			puts "Finish point must be within map."
+			puts
 		end
 	end
+
+
+	def showposition
+		puts "You are at #{@currentpos[0]}, #{@currentpos[1]}"
+	end
+
+
+	def move (direction)
+		case direction
+		when "w"
+			@currentpos[1] += 1
+			if @currentpos == @finish
+				puts "Congratulations you win!"
+			elsif @currentpos[1] <= @map[1]
+				puts "You move up one space."
+				showposition
+			else
+				puts "You are at the edge of the map, you cannot move up."
+				@currentpos[1] -= 1
+				showposition
+			end
+
+		when "s"
+			@currentpos[1] -= 1
+			if 	@currentpos == @finish
+				puts "Congratulations you win!"
+
+			elsif
+				@currentpos[1] >= 0
+				puts "You move down one space."
+				showposition
+			else
+				puts "You are at the edge of the map, you cannot move down."
+				@currentpos[1] += 1
+				showposition
+			end
+		when "d"
+			@currentpos[0] += 1
+			if 	@currentpos == @finish
+				puts "Congratulations you win!"
+			elsif @currentpos[0] <= @map[0]
+				puts "You move right one space."
+				showposition
+			else
+				puts "You are at the edge of the map, you cannot move right."
+				@currentpos[0] -= 1
+				showposition
+			end
+			
+		when "a"
+			@currentpos[0] -= 1
+			if 	@currentpos == @finish
+				puts "Congratulations you win!"
+			elsif @currentpos[0] >= 0
+				puts "You move left one space."
+				showposition
+			else
+				puts "You are at the edge of the map, you cannot move left."
+				@currentpos[0] += 1
+				showposition
+			end	
+
+		else	
+			puts "Seriously, how difficult is it to use WSAD???"
+		end
+	end
+
 
 end
 
 # test = Map.new(5, 5, 1)
 # test.setfinish(3, 1)
-# test.charposition(1, 1)
+# test.setstart(1, 1)
 
 
 
 
-# class Character (x, y)
+class Character 
+	
+	attr_accessor :health
 
-# 	def initialize
-# 		@health = 10
-# 		@@attack = 1
-# 		@money = 5
-# 		@position = [x, y]
-# 	end
+	def initialize (name)
+		@health = 10
+		@attack = 1
+		@money = 5
+		@name = name
 
-# 	def showposition
-# 		puts "You are at #{@position[0]}, #{@position[1]}"
-# 	end
+		puts "Welcome #{@name}, you start with #{@health} health, and #{@money} gold pieces!"
+		puts
+		puts
+	end
 
-
-
-# end
+end
 
 
 
