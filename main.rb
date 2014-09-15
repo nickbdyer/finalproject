@@ -38,11 +38,20 @@ while world.finishset == false do
 	world.setfinish(xf, yf)
 end
 
-print "How many NPCs do you want?: "
-world.numnpc = gets.to_i
+print "Do you want and NPC? (y/n): "
+npcyn = gets.chomp
+	if npcyn == "y"
+		while world.npcset == false do
+			puts "Let's choose your finish position:"
+			print "Enter x coordinate:"
+			xnpc = gets.to_i
+			print "Enter y coordinate:"
+			ynpc = gets.to_i
 
-numnpc.times do
-	Npc.new
+			world.locatenpc(xnpc, ynpc)
+	else
+		puts "Boring!"
+	
 end
 
 

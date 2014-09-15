@@ -139,8 +139,6 @@ end
 
 
 
-
-
 class Character 
 	
 	attr_accessor :health
@@ -159,78 +157,71 @@ class Character
 end
 
 
+class NPC
+
+	def initialize
+		@health = 0
+		@power = 0
+		@gold = rand(1..10)
+
+	end
+
+end
 
 
-# npcarray = ["Rogue", "Warlock", "Swordsmith", "Wizard"]
-# randNPC = rand(npcarray)
+class Rogue < NPC
+	def initialize
+		@health = 3
+		@power = 1
+	end
+
+end
 
 
-
-# class NPC
-
-# 	def initialize
-# 		@health = 0
-# 		@power = 0
-# 		@gold = rand(1..10)
-
-# 	end
-
-# end
+class Warlock < NPC
+	def initialize
+		@health = 2
+		@power = 2
+	end
+end
 
 
-# class Rogue < NPC
-# 	def initialize
-# 		@health = 3
-# 		@power = 1
-# 	end
+class Merchant < NPC
+	def initialize
+		@health = 0	
+	end
 
-# end
+	def 
 
+end
 
-# class Warlock < NPC
-# 	def initialize
-# 		@health = 2
-# 		@power = 2
-# 	end
-# end
+class Swordsmith < Merchant
 
-
-# class Merchant < NPC
-# 	def initialize
-# 		@health = 0	
-# 	end
-
-# 	def 
-
-# end
-
-# class Swordsmith < Merchant
-
-# 	def initialize
-# 		puts "Hello I am a Swordsmith!"
-# 		puts "Would you like me to sharpen your sword for 5 gold pieces?"
-# 	end
+	def initialize
+		puts "Hello I am a Swordsmith!"
+		puts "Would you like me to sharpen your sword for 5 gold pieces?"
+	end
 
 
-# 	def sharpen
-# 		@@attack += 1
-# 		puts "Your sword has been sharpened! "
-# 	end
-# end
+	def sharpen
+		@@attack += 1
+		puts "Your sword has been sharpened! "
+	end
+end
 
-# class Wizard < Merchant
+class Wizard < Merchant
 
-# 	def initialize
-# 		puts "Hello I am a Wizard!"
-# 		puts "Would you like me to heal you for 5 gold pieces?"
-# 	end
+	def initialize
+		puts "Hello I am a Wizard!"
+		puts "Would you like me to heal you for 5 gold pieces?"
+	end
 
 
-# 	def heal
-# 		@@health += 1
-# 		puts "Your health has been increased!"
-# 	end
-# end
+	def heal
+		@@health += 1
+		puts "Your health has been increased!"
+	end
+end
 
 
 
