@@ -41,6 +41,11 @@ end
 print "How many NPCs do you want?: "
 world.numnpc = gets.to_i
 
+numnpc.times do
+	Npc.new
+end
+
+
 world.showposition
 
 puts "Right! Let's go! Use WASD to move."
