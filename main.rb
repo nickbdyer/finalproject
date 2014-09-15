@@ -8,33 +8,50 @@ puts
 
 puts "What is your name?"
 name = gets.chomp
+player = Character.new(name)
 
 puts "First define the size of the map you want:"
 print "Enter width:"
-width = gets.chomp
+width = gets.to_i
 print "Enter height:"
-height = gets.chomp
-puts "Now choose your starting position:"
-print "Enter x coordinate:"
-xs = gets.chomp
-print "Enter y coordinate:"
-ys = gets.chomp
-puts "Let's choose your finish position:"
-print "Enter x coordinate:"
-xf = gets.chomp
-print "Enter y coordinate:"
-yf = gets.chomp
+height = gets.to_i
+
+	world = Map.new(width, height)
+
+while world.startset == false do
+	puts "Now choose your starting position:"
+	print "Enter x coordinate:"
+	xs = gets.to_i
+	print "Enter y coordinate:"
+	ys = gets.to_i
+
+	world.setstart(xs, ys)
+end
+
+while world.finishset == false do
+	puts "Let's choose your finish position:"
+	print "Enter x coordinate:"
+	xf = gets.to_i
+	print "Enter y coordinate:"
+	yf = gets.to_i
+
+	world.setfinish(xf, yf)
+end
+
 print "How many NPCs do you want?: "
-numnpc = gets.chomp
+world.numnpc = gets.to_i
 
-world = Map.new (width, height, numnpc)
-player = Character.new (xs, ys)
-world.setfinish(xf, yf)
-
+world.showposition
 
 puts "Right! Let's go! Use WASD to move."
-move = gets.chomp
-puts "---You move #{direction}.---"
+
+while player.health != 0 || player.health < 0 do
+	input = gets.chomp
+	world.move(input)
+end
+
+
+
 
 
 
