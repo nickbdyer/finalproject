@@ -36,6 +36,37 @@ class Map
 		end
 	end
 
+	def locatenpc(npcx, npcy)
+			@npcpos << npcx
+			@npcpos << npcy
+			if npcx <= @map[0] && npcy <= @map[1]
+				puts "NPC position set!"
+				puts
+				@npcset = true
+			else
+				puts "NPC position must be within map."
+				puts
+			end
+	end
+
+
+	def createnpc
+		npcarray = ["Rogue", "Warlock", "Swordsmith", "Wizard"]
+		randNPC = npcarray[rand(npcarray.length)]
+
+		npc = randNPC
+		case npc
+		when "Rogue"
+			Rogue.new
+		when "Warlock"
+			Warlock.new
+		when "Swordsmith"
+			Swordsmith.new
+		when "Wizard"
+			Wizard.new
+		end
+
+	end
 
 	def showposition
 		puts "You are at #{@currentpos[0]}, #{@currentpos[1]}"
@@ -105,9 +136,7 @@ class Map
 
 end
 
-# test = Map.new(5, 5, 1)
-# test.setfinish(3, 1)
-# test.setstart(1, 1)
+
 
 
 
