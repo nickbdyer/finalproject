@@ -1,13 +1,13 @@
 class Map
 
-	attr_accessor :startset, :finishset, :numnpc
+	attr_accessor :startset, :finishset, :npcset
 
 	def initialize (x, y)
 		@map = [x.abs, y.abs] 
 		@currentpos = []
 		@startset = false
 		@finishset = false
-		@numnpc = 0
+		@npcset = false
 	end
 
 	def setstart (startx, starty)
