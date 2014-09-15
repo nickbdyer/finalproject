@@ -5,9 +5,11 @@ class Map
 	def initialize (x, y)
 		@map = [x.abs, y.abs] 
 		@currentpos = []
+		@npcpos = []
 		@startset = false
 		@finishset = false
 		@npcset = false
+
 	end
 
 	def setstart (startx, starty)
@@ -157,71 +159,71 @@ class Character
 end
 
 
-class NPC
+# class NPC
 
-	def initialize
-		@health = 0
-		@power = 0
-		@gold = rand(1..10)
+# 	def initialize
+# 		@health = 0
+# 		@power = 0
+# 		@gold = rand(1..10)
 
-	end
+# 	end
 
-end
-
-
-class Rogue < NPC
-	def initialize
-		@health = 3
-		@power = 1
-	end
-
-end
+# end
 
 
-class Warlock < NPC
-	def initialize
-		@health = 2
-		@power = 2
-	end
-end
+# class Rogue < NPC
+# 	def initialize
+# 		@health = 3
+# 		@power = 1
+# 	end
+
+# end
 
 
-class Merchant < NPC
-	def initialize
-		@health = 0	
-	end
-
-	def 
-
-end
-
-class Swordsmith < Merchant
-
-	def initialize
-		puts "Hello I am a Swordsmith!"
-		puts "Would you like me to sharpen your sword for 5 gold pieces?"
-	end
+# class Warlock < NPC
+# 	def initialize
+# 		@health = 2
+# 		@power = 2
+# 	end
+# end
 
 
-	def sharpen
-		@@attack += 1
-		puts "Your sword has been sharpened! "
-	end
-end
+# class Merchant < NPC
+# 	def initialize
+# 		@health = 0	
+# 	end
 
-class Wizard < Merchant
+# 	def 
 
-	def initialize
-		puts "Hello I am a Wizard!"
-		puts "Would you like me to heal you for 5 gold pieces?"
-	end
+# end
+
+# class Swordsmith < Merchant
+
+# 	def initialize
+# 		puts "Hello I am a Swordsmith!"
+# 		puts "Would you like me to sharpen your sword for 5 gold pieces?"
+# 	end
 
 
-	def heal
-		@@health += 1
-		puts "Your health has been increased!"
-	end
-end
+# 	def sharpen
+# 		@@attack += 1
+# 		puts "Your sword has been sharpened! "
+# 	end
+# end
+
+# class Wizard < Merchant
+
+# 	def initialize
+# 		puts "Hello I am a Wizard!"
+# 		puts "Would you like me to heal you for 5 gold pieces?"
+# 	end
+
+
+# 	def heal
+# 		@@health += 1
+# 		puts "Your health has been increased!"
+# 	end
+# end
 
 
 

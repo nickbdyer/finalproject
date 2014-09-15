@@ -42,17 +42,19 @@ print "Do you want and NPC? (y/n): "
 npcyn = gets.chomp
 	if npcyn == "y"
 		while world.npcset == false do
-			puts "Let's choose your finish position:"
+			puts "Let's choose the NPC position:"
 			print "Enter x coordinate:"
 			xnpc = gets.to_i
 			print "Enter y coordinate:"
 			ynpc = gets.to_i
 
 			world.locatenpc(xnpc, ynpc)
+		end
 	else
 		puts "Boring!"
+	end
 	
-end
+
 
 
 world.showposition
