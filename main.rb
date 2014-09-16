@@ -60,40 +60,14 @@ npcyn = gets.chomp
 world.showposition
 
 puts "Right! Let's go! Use WASD to move."
-
-while player.health != 0 || player.health < 0 do
-	input = gets.chomp
-	world.move(input)
+if player.health > 0 
+	while player.health > 0 do
+		input = gets.chomp
+		world.move(input)
+	end
+else
+	puts "You have died!"
+	exit
 end
 
 
-
-
-
-
-=begin
-
-Enter width of map: 4
-Enter height of map: 4
-Enter character start position x: 0
-Enter character start poisition y: 0
-Enter final position x: 4
-Enter final position y: 4
-How many npcs: 1
-Npc 1 type: rogue
-Enter Npc 1 position x: 1
-Enter Npc 1 position y: 1
-Game starts!
-Where do you want do go? U/D/L/R
---- you select U ---
-says: you can't go up!
---- you select down ---
-You are now facing the rogue. He hits you 2 times. Your health is now at 2.
-or
-You are now facing the rogue. He hits you 2 times. Your die!
-
-Where do you want do go? U/D/L/R
---- you select right ---
-You have now reached the portal. Congratulations!
-
-=end
