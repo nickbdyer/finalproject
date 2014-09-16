@@ -53,7 +53,7 @@ class Map
 
 
 	def createnpc
-		npcarray = ["Rogue", "Warlock", "Swordsmith", "Wizard"]
+		npcarray = ["Rogue", "Swordsmith"]
 		randNPC = npcarray[rand(npcarray.length)]
 
 		npc = randNPC
@@ -81,6 +81,7 @@ class Map
 			@currentpos[1] += 1
 			if @currentpos == @finish
 				puts "Congratulations you win!"
+				exit
 			elsif @currentpos[1] <= @map[1] && @currentpos == @npcpos
 				puts "You move up one space, there is someone here."
 				createnpc
@@ -98,6 +99,7 @@ class Map
 			@currentpos[1] -= 1
 			if 	@currentpos == @finish
 				puts "Congratulations you win!"
+				exit
 			elsif
 				@currentpos[1] >= 0 && @currentpos == @npcpos
 				puts "You move down one space, there is someone here."
@@ -116,6 +118,7 @@ class Map
 			@currentpos[0] += 1
 			if 	@currentpos == @finish
 				puts "Congratulations you win!"
+				exit
 			elsif @currentpos[0] <= @map[0] && @currentpos == @npcpos
 				puts "You move right one space, there is someone here."
 				createnpc
@@ -133,6 +136,7 @@ class Map
 			@currentpos[0] -= 1
 			if 	@currentpos == @finish
 				puts "Congratulations you win!"
+				exit
 			elsif @currentpos[0] >= 0  && @currentpos == @npcpos
 				puts "You move left one space, there is someone here."
 				createnpc
@@ -197,7 +201,11 @@ class Rogue < NPC
 		@power = 1
 		while @health > 0 do
 			puts "The rogue attacks! You hit him for #{player.attack}, he hits you for #{@power}."
-
+			@health -= player.attack
+			player.health -= @power
+		end
+		puts "The rogue dies. You have #{player.health} health."
+		player.money += @gold
 	end
 
 end
@@ -233,7 +241,7 @@ class Swordsmith < Merchant
 	def sharpen
 		if player.money >= 5
 			player.attack += 1
-			player.money - 5
+			player.money -= 5
 			puts "Your sword has been sharpened! "
 		else 
 			puts "You don't have enough money!"
