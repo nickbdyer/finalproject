@@ -59,7 +59,8 @@ class Map
 		npc = randNPC
 		case npc
 		when "Rogue"
-			Rogue.new
+			enemy = Rogue.new
+			enemy.fight
 		when "Warlock"
 			Warlock.new
 		when "Swordsmith"
@@ -199,6 +200,9 @@ class Rogue < NPC
 		puts "Hello I am a Rogue!"
 		@health = 3
 		@power = 1
+	end
+
+	def fight
 		while @health > 0 do
 			puts "The rogue attacks! You hit him for #{player.attack}, he hits you for #{@power}."
 			@health -= player.attack
@@ -206,7 +210,9 @@ class Rogue < NPC
 		end
 		puts "The rogue dies. You have #{player.health} health."
 		player.money += @gold
+
 	end
+
 
 end
 
@@ -245,6 +251,7 @@ class Swordsmith < Merchant
 			puts "Your sword has been sharpened! "
 		else 
 			puts "You don't have enough money!"
+		end
 	end
 
 end
