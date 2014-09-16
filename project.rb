@@ -81,6 +81,10 @@ class Map
 			@currentpos[1] += 1
 			if @currentpos == @finish
 				puts "Congratulations you win!"
+			elsif @currentpos[1] <= @map[1] && @currentpos == @npcpos
+				puts "You move up one space, there is someone here."
+				createnpc
+				showposition
 			elsif @currentpos[1] <= @map[1]
 				puts "You move up one space."
 				showposition
@@ -94,7 +98,11 @@ class Map
 			@currentpos[1] -= 1
 			if 	@currentpos == @finish
 				puts "Congratulations you win!"
-
+			elsif
+				@currentpos[1] >= 0 && @currentpos == @npcpos
+				puts "You move down one space, there is someone here."
+				createnpc
+				showposition
 			elsif
 				@currentpos[1] >= 0
 				puts "You move down one space."
@@ -108,6 +116,10 @@ class Map
 			@currentpos[0] += 1
 			if 	@currentpos == @finish
 				puts "Congratulations you win!"
+			elsif @currentpos[0] <= @map[0] && @currentpos == @npcpos
+				puts "You move right one space, there is someone here."
+				createnpc
+				showposition
 			elsif @currentpos[0] <= @map[0]
 				puts "You move right one space."
 				showposition
@@ -121,6 +133,10 @@ class Map
 			@currentpos[0] -= 1
 			if 	@currentpos == @finish
 				puts "Congratulations you win!"
+			elsif @currentpos[0] >= 0  && @currentpos == @npcpos
+				puts "You move left one space, there is someone here."
+				createnpc
+				showposition
 			elsif @currentpos[0] >= 0
 				puts "You move left one space."
 				showposition
@@ -143,7 +159,7 @@ end
 
 class Character 
 	
-	attr_accessor :health
+	attr_accessor :health, :attack, :money
 
 	def initialize (name)
 		@health = 10
@@ -159,57 +175,71 @@ class Character
 end
 
 
-# class NPC
-
-# 	def initialize
-# 		@health = 0
-# 		@power = 0
-# 		@gold = rand(1..10)
-
-# 	end
-
-# end
 
 
-# class Rogue < NPC
-# 	def initialize
-# 		@health = 3
-# 		@power = 1
-# 	end
+class NPC
 
-# end
+	def initialize
+		@health = 0
+		@power = 0
+		@gold = rand(1..10)
+
+	end
+
+end
+
+
+class Rogue < NPC
+
+	def initialize
+		puts "Hello I am a Rogue!"
+		@health = 3
+		@power = 1
+		while @health > 0 do
+			puts "The rogue attacks! You hit him for #{player.attack}, he hits you for #{@power}."
+
+	end
+
+end
 
 
 # class Warlock < NPC
+
 # 	def initialize
+# 		puts "Hello I am a Warlock!"
 # 		@health = 2
 # 		@power = 2
 # 	end
 # end
 
 
-# class Merchant < NPC
-# 	def initialize
-# 		@health = 0	
-# 	end
+class Merchant < NPC
 
-# 	def 
+	def initialize
+		@health = 0	
+	end
 
-# end
+end
 
-# class Swordsmith < Merchant
+class Swordsmith < Merchant
 
-# 	def initialize
-# 		puts "Hello I am a Swordsmith!"
-# 		puts "Would you like me to sharpen your sword for 5 gold pieces?"
-# 	end
+	def initialize
+		puts "Hello I am a Swordsmith!"
+		puts "Would you like me to sharpen your sword for 5 gold pieces?"
+
+	end
 
 
-# 	def sharpen
-# 		@@attack += 1
-# 		puts "Your sword has been sharpened! "
-# 	end
-# end
+	def sharpen
+		if player.money >= 5
+			player.attack += 1
+			player.money - 5
+			puts "Your sword has been sharpened! "
+		else 
+			puts "You don't have enough money!"
+	end
+
+end
 
 # class Wizard < Merchant
 
@@ -220,17 +250,22 @@ end
 
 
 # 	def heal
-# 		@@health += 1
+# 		player.health += 1
+# 		player.money - 5
 # 		puts "Your health has been increased!"
 # 	end
 # end
 
 
 
+
+
+
+
 =begin
+
+
 Game
-
-
 
 
 Classes (characters)
@@ -293,5 +328,29 @@ always display coordinates
 - must use at least one array
 - use a mailing gem to send end result of game to myself. 
 - must use inheritance
+
+
+Enter width of map: 4
+Enter height of map: 4
+Enter character start position x: 0
+Enter character start poisition y: 0
+Enter final position x: 4
+Enter final position y: 4
+How many npcs: 1
+Npc 1 type: rogue
+Enter Npc 1 position x: 1
+Enter Npc 1 position y: 1
+Game starts!
+Where do you want do go? U/D/L/R
+--- you select U ---
+says: you can't go up!
+--- you select down ---
+You are now facing the rogue. He hits you 2 times. Your health is now at 2.
+or
+You are now facing the rogue. He hits you 2 times. Your die!
+
+Where do you want do go? U/D/L/R
+--- you select right ---
+You have now reached the portal. Congratulations!
 
 =end
